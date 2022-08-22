@@ -83,13 +83,13 @@ void Cheats::CheckUpdate() // cheat loop
 	}
 
 	// Vehicle Speed
-	if (Config::tGrav != 1.0 && PedFactory->Ped->Vehicle != nullptr)
+	if (Config::tGrav != 1.0 && PedFactory->Ped->Vehicle != nullptr && *(bool*)isInVehicle)
 	{
 		PedFactory->Ped->Vehicle->gravity = (Config::tGrav * 10.0);
 	}
 
 	// 0 Gravity
-	if (Config::isZeroGrav)
+	if (Config::isZeroGrav && *(bool*)isInVehicle)
 	{
 		Config::tGrav = 1.0; // reset gravity multiplier first
 		PedFactory->Ped->Vehicle->gravity = 0;

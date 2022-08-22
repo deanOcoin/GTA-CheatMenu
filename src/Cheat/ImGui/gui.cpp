@@ -263,7 +263,7 @@ void gui::Render() noexcept
 	ImGui::Checkbox("Toggle Infinite Ammo", &Config::isInfAmmo);
 	ImGui::Checkbox("Toggle One Shot Kill (Weapon in Hand)", &Config::isOSK);
 	ImGui::Text("");
-	if (*(bool*)isInVehicle == 1) // if player is in vehicle: display vehicle cheats
+	if (*(bool*)isInVehicle) // if player is in vehicle: display vehicle cheats
 	{
 		ImGui::BulletText("Vehicle");
 		ImGui::SliderFloat("Vehicle Speed", &Config::tGrav, 1, 5);

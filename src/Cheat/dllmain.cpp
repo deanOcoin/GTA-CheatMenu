@@ -29,6 +29,8 @@ DWORD WINAPI Payload(HMODULE hModule)
     gui::CreateDevice();
     gui::CreateImGui();
 
+    SetWindowPos(gui::window, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+
     while (gui::isRunning)
     {
         gui::BeginRender();
