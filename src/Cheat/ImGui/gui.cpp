@@ -245,7 +245,7 @@ void gui::Render() noexcept
 	ImGui::SetNextWindowPos({ 0, 0 });
 	ImGui::SetNextWindowSize({ WIDTH, HEIGHT });
 	ImGui::Begin(
-		"Cheat Menu",
+		"XxNigga Menu 69xX",
 		&isRunning,
 		ImGuiWindowFlags_NoResize |
 		ImGuiWindowFlags_NoSavedSettings |
@@ -262,6 +262,7 @@ void gui::Render() noexcept
 	ImGui::BulletText("Weapon");
 	ImGui::Checkbox("Toggle Infinite Ammo", &Config::isInfAmmo);
 	ImGui::Checkbox("Toggle One Shot Kill (Weapon in Hand)", &Config::isOSK);
+	ImGui::Checkbox("Toggle NoRecoil Pro (Weapon in Hand)", &Config::isNRP);
 	ImGui::Text("");
 	if (*(bool*)isInVehicle) // if player is in vehicle: display vehicle cheats
 	{

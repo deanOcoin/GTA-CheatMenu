@@ -79,15 +79,14 @@ public:
 
 class CHandlingData
 {
-
+	
 };
 
 class CPedWeaponManager
 {
 public:
 	char pad_0000[24]; //0x0000
-	int32_t selected_weapon_hash; //0x0018
-	char pad_001C[4]; //0x001C
+	int64_t selected_weapon_hash; //0x0018
 	class CWeaponInfo* WeaponInfo; //0x0020
 };
 
@@ -95,7 +94,7 @@ class CWeaponInfo
 {
 public:
 	char pad_0000[32]; //0x0000
-	eDamageType damageType; //0x0020
+	int32_t ignore_int; //0x0020
 	char pad_0024[76]; //0x0024
 	int32_t clip_size; //0x0070
 	float accuracy_spread; //0x0074
@@ -105,4 +104,8 @@ public:
 	float weapon_damage; //0x00B0
 	char pad_00B4[20]; //0x00B4
 	float limb_damage_modifier; //0x00C8
+	char pad_00CC[80]; //0x00CC
+	float speed; //0x11C
+	char pad_01E8[468]; //0x1E8
+	float explosion_shake_amplitude; //0x02F4
 };

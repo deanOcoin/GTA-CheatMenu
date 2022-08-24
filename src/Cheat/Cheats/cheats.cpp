@@ -42,8 +42,12 @@ void Cheats::CheckUpdate() // cheat loop
 	static bool INWtog = 0;
 	static bool IIAtog = 0;
 	static bool OSKtog = 0;
+	static bool NRPtog = 0;
 
-	static float originaldamage; // test to see if making this static and removing assignment fixed it
+	// 
+	static float originaldamage;
+	static float ogac;
+	static float ogex;
 
 	// Never Wanted
 	if (Config::isNeverWanted && !INWtog)
@@ -70,9 +74,14 @@ void Cheats::CheckUpdate() // cheat loop
 	}
 
 	// One Shot Kill
-	if (Config::isOSK && !OSKtog)
+	if (Config::isOSK)
 	{
-		originaldamage = PedFactory->Ped->WeaponManager->WeaponInfo->weapon_damage;
+		if (PedFactory->Ped->WeaponManager->WeaponInfo->weapon_damage != 500.0)
+			originaldamage = PedFactory->Ped->WeaponManager->WeaponInfo->weapon_damage;
+	}
+
+	if (Config::isOSK)
+	{
 		PedFactory->Ped->WeaponManager->WeaponInfo->weapon_damage = 500.0;
 		OSKtog = 1;
 	}
@@ -80,6 +89,30 @@ void Cheats::CheckUpdate() // cheat loop
 	{
 		PedFactory->Ped->WeaponManager->WeaponInfo->weapon_damage = originaldamage;
 		OSKtog = 0;
+	}
+
+	// NoRecoil Pro
+	if (Config::isNRP)
+	{
+		if (PedFactory->Ped->WeaponManager->WeaponInfo->accuracy_spread != 0.0 &&
+			PedFactory->Ped->WeaponManager->WeaponInfo->explosion_shake_amplitude != 0.0)
+		{
+			ogac = PedFactory->Ped->WeaponManager->WeaponInfo->accuracy_spread;
+			ogex = PedFactory->Ped->WeaponManager->WeaponInfo->explosion_shake_amplitude;
+		}
+	}
+
+	if (Config::isNRP)
+	{
+		PedFactory->Ped->WeaponManager->WeaponInfo->accuracy_spread = 0.0;
+		PedFactory->Ped->WeaponManager->WeaponInfo->explosion_shake_amplitude = 0.0;
+		NRPtog = 1;
+	}
+	else if (!Config::isNRP && NRPtog)
+	{
+		PedFactory->Ped->WeaponManager->WeaponInfo->accuracy_spread = ogac;
+		PedFactory->Ped->WeaponManager->WeaponInfo->explosion_shake_amplitude = ogex;
+		NRPtog = 0;
 	}
 
 	// Vehicle Speed

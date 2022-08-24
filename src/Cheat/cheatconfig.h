@@ -11,5 +11,6 @@ namespace Config
 	inline bool isNeverWanted = 0;
 	inline bool isInfAmmo = 0;
 	inline bool isOSK = 0;
-	inline bool isZeroGrav;
+	inline bool isZeroGrav = 0;
+	inline bool isNRP = 0;
 }

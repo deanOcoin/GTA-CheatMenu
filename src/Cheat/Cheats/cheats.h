@@ -15,5 +15,3 @@ public:
 	void InfAmmo(bool tog);
 	void CheckUpdate();
 };
-
-
