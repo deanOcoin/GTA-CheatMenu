@@ -25,7 +25,7 @@ DWORD WINAPI Payload(HMODULE hModule)
     }
 
     // gui init
-    gui::CreateHWindow("XxNigga Menu 69xX");
+    gui::CreateHWindow("Cheat Menu");
     gui::CreateDevice();
     gui::CreateImGui();
 
